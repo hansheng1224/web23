@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set("Asia/Taipei");
 
 class DB{
-    protected $dsn="mysql:host=localhost;chartset=utf8;dbname=db23";
+    protected $dsn="mysql:host=localhost;chartset=utf8;dbname=db22";
     protected $t;
     protected $pdo;
     public $type=[
@@ -55,11 +55,11 @@ class DB{
 
     public function save($a){
         if(isset($a['id'])){
-        $sql="select * from $this->t ";
+
         $id=$a['id'];
         unset($a['id']);
             $tmp=$this->atsa($a);
-            $sql=$sql."update $this->t set ".join(",",$tmp)." where `id`='$id'";
+            $sql="update $this->t set ".join(",",$tmp)." where `id`='$id'";
         }else{
             $c=array_keys($a);
             $sql="insert into $this->t (`".join("`,`",$c)."`) values ('".join("','",$a)."')";
@@ -138,14 +138,15 @@ function to($url){
 }
 
 function q($sql){
-    $pdo=new PDO("mysql:host=localhost;chartset=utf8;dbname=db23",'root','');
+    $pdo=new PDO("mysql:host=localhost;chartset=utf8;dbname=db22",'root','');
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 $Total=new DB('total');
 $News=new DB('news');
 $User=new DB('user');
-
+$Log=new DB('log');
+$Que=new DB('que');
 
 
 if(!isset($_SESSION['total'])){
