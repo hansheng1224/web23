@@ -156,6 +156,7 @@ if(!isset($_SESSION['total'])){
     }else{
         $today['total']++;
     }
+    // dd($today);
     $Total->save($today);
     $_SESSION['total']=1;
 }

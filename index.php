@@ -21,6 +21,8 @@ include "./api/base.php";
 	<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
 		<div id="title">
+			<!-- <?=dd($_SESSION);?> -->
+			
 			<?=date("m月d日l");?> | 今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | 累積瀏覽: <?=$Total->sum('total')?> 
 			<a href="index.php" style='float:right'>回首頁</a>
 		</div>
